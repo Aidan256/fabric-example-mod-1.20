@@ -13,7 +13,7 @@ import net.minecraft.world.World;
 
 @Mixin(AbstractBlock.AbstractBlockState.class)
 public class AbstractBlockMixin {
-	@Inject(method = "onBlockBreakStart(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/player/PlayerEntity;)V", at = @At("HEAD"))
+	@Inject(method = "onBlockBreakStart", at = @At("HEAD"))
 	private void blockInj(World world, BlockPos pos, PlayerEntity player,CallbackInfo ci) {
 		EventHandler.onBlockBreakStart(pos);
 	}

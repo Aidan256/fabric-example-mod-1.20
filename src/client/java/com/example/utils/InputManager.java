@@ -1,7 +1,7 @@
 package com.example.utils;
 
 import com.example.Modules.ModuleRegistry;
-import com.example.SpaceMod;
+import com.example.Spaceclientmod;
 import org.lwjgl.glfw.GLFW;
 
 
@@ -31,7 +31,7 @@ public class InputManager {
 			
 		}
 		if(checkKey(GLFW.GLFW_KEY_KP_1,true)) {
-			SpaceMod.LOGGER.info("orderfly");
+			Spaceclientmod.LOGGER.info("orderfly");
 			ModuleRegistry.getModule(ModuleRegistry.mods.FLYMODULE).setEnabled(true);
 		}
 		if(checkKey(GLFW.GLFW_KEY_R,true)) {

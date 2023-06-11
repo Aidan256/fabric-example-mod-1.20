@@ -28,6 +28,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.village.TradeOffer;
 import net.minecraft.village.TradeOfferList;
 import net.minecraft.village.VillagerProfession;
+import org.jetbrains.annotations.Nullable;
 
 public class VillagerRollerModule extends Module {
 	
@@ -89,8 +90,9 @@ public class VillagerRollerModule extends Module {
 				while (myReader.hasNextLine()) {
 				    String data = myReader.nextLine();
 				    String[] messageSplit = data.trim().split(":");
-				    
+
 				    desiredTrades.add(new RollerEnchantment(Registries.ENCHANTMENT.get(new Identifier(messageSplit[0])), messageSplit.length>1 ? Integer.parseInt(messageSplit[1]):0, messageSplit.length>2 ? Integer.parseInt(messageSplit[2]):65));
+
 				}
 			} catch (NumberFormatException e) {
 				// TODO Auto-generated catch block
@@ -103,7 +105,7 @@ public class VillagerRollerModule extends Module {
 		}
 		
 	}
-	
+
 	private static void removeEnchantFromList(int i) throws IOException {
 		desiredTrades.remove(i);
 		File inputFile = desiredTradesFile;
@@ -215,7 +217,11 @@ public class VillagerRollerModule extends Module {
 				
 				for(int i=0;i<desiredTrades.size();i++) {
 					RollerEnchantment desired = desiredTrades.get(i);
-					if(enchant.getKey()!=desired.enchant||offer.getOriginalFirstBuyItem().getCount() >desired.maxPrice||(desired.level==0&&enchant.getValue()!=desired.enchant.getMaxLevel()||(desired.level>0&&enchant.getValue()!=desired.level))) continue;
+					if(!enchant.getKey().getName(1).equals(desired.enchant.getName(1))||offer.getOriginalFirstBuyItem().getCount() >desired.maxPrice||(desired.level==0&&enchant.getValue()!=desired.enchant.getMaxLevel()||(desired.level>0&&enchant.getValue()!=desired.level))){
+
+						continue;
+					}
+
 					try {
 						removeEnchantFromList(i);
 					} catch (IOException e) {

@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 import com.example.Commands.Command;
 import com.example.Commands.CommandRegistry;
-import com.example.SpaceMod;
+import com.example.Spaceclientmod;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -12,15 +12,14 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ChatScreen;
-import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.text.Text;
 
 @Mixin(ChatScreen.class)
 public class ChatScreenMixin {
 	@Redirect(method = "sendMessage",at = @At(value="INVOKE",target="Lnet/minecraft/client/network/ClientPlayNetworkHandler;sendChatMessage(Ljava/lang/String;)V"))
 	private void redirector(ClientPlayNetworkHandler instance, String message) {
-		if(message.startsWith(SpaceMod.PREFIX)) {
-			String trimmedMessage = message.substring(SpaceMod.PREFIX.length());
+		if(message.startsWith(Spaceclientmod.PREFIX)) {
+			String trimmedMessage = message.substring(Spaceclientmod.PREFIX.length());
 			if(trimmedMessage.isEmpty()||trimmedMessage.isBlank()) return;
 			String[] messageSplit = trimmedMessage.trim().split(" +");
 			String command = messageSplit[0];

@@ -2,7 +2,7 @@
 	"schemaVersion": 1,
 	"id": "spacemod",
 	"version": "${version}",
-	"name": "SpaceMod",
+	"name": "space-mod",
 	"description": "This is an example description! Tell everyone what your mod is about!",
 	"authors": [
 		"SpaceTime24"
@@ -16,10 +16,10 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.example.SpaceMod"
+			"com.example.Spacemod"
 		],
 		"client": [
-			"com.example.SpaceClientMod"
+			"com.example.Spaceclientmod"
 		]
 	},
 	"mixins": [

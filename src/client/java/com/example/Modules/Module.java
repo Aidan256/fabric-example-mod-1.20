@@ -1,7 +1,7 @@
 package com.example.Modules;
 
 
-import com.example.SpaceMod;
+import com.example.Spaceclientmod;
 
 public abstract class Module {
 	
@@ -21,7 +21,7 @@ public abstract class Module {
 	public final boolean isEnabled() {return enabled;}
 	
 	public final void setEnabled(boolean enable) {
-		SpaceMod.LOGGER.info("SetenabledFunction, currently enabled is "+this.enabled);
+		Spaceclientmod.LOGGER.info("SetenabledFunction, currently enabled is "+this.enabled);
 		if(enabled==enable) {
 			return;
 		}
